@@ -30,13 +30,13 @@ class Caltech(VisionDataset):
 
 
     def __getitem__(self, i):
-            
-        #label = categories.index(index[:-15])
-
-        #image = pil_loader(index)
+      
         image, label = self.images[i], self.categories.index(self.indexes[i][:-15])
 
         # Applies preprocessing when accessing the image
+        if self.transform is not None:
+            image = self.transform(image)
+            
         return image, label
 
     def __len__(self):
