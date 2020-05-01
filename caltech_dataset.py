@@ -18,13 +18,13 @@ class Caltech(VisionDataset):
     def __init__(self, root, split='train', transform=None, target_transform=None):
         super(Caltech, self).__init__(root, transform=transform, target_transform=target_transform)
 
-        self.split = split + ".txt"
+        self.split = "Caltech101/" + split + ".txt"
         with open(self.split) as f:
             self.indexes = [line.rstrip() for line in f if line.startswith("BAC")==False]
         self.categories = list(set([ind[:-15] for ind in self.indexes]))
         self.categories.sort(key=lambda v: v.upper())
         self.labels = [self.categories.index(ind[:-15]) for ind in self.indexes]
-        self.images = [pil_loader("101_ObjectCategories/"+ind) for ind in self.indexes]
+        self.images = [pil_loader("Caltech101/101_ObjectCategories/"+ind) for ind in self.indexes]
 
         #- Labels should start from 0, so for Caltech you will have lables 0...100 (excluding the background class)
 
