@@ -29,7 +29,7 @@ class Caltech(VisionDataset):
         #- Labels should start from 0, so for Caltech you will have lables 0...100 (excluding the background class)
 
 
-    def __getitem__(self, index):
+    def __getitem__(self, i):
             
         #label = categories.index(index[:-15])
 
